@@ -2,5 +2,5 @@
 
 namespace PublisherSubscriberProj
 {
-    delegate void StartStopSorted(DateTime dateTime);
+    delegate void StartStopSorted(object sender, StartStopSortedEventArgs args);
 }

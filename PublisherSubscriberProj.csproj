@@ -52,7 +52,9 @@
     <Compile Include="Randomyzer.cs" />
     <Compile Include="SorterClass\Sorter.cs" />
     <Compile Include="Delegate\StartStopSorted.cs" />
+    <Compile Include="StartStopSortedEventArgs.cs" />
     <Compile Include="SwapCompareAnalyzer.cs" />
+    <Compile Include="SwapCompareEventArgs.cs" />
     <Compile Include="TimeAnalyzer.cs" />
   </ItemGroup>
   <ItemGroup>

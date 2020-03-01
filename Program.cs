@@ -14,15 +14,18 @@ namespace PublisherSubscriberProj
             TimeAnalyzer time = new TimeAnalyzer();
             Sorter source = new BubbleSort();
 
-            source.SubscribeTimeStart(time.StartHandler);
-            source.SubscribeTimeStop(time.StopHandler);
-            source.SubscribeSwapCounter(count.GetSwap);
-            source.SubscribeCompareCounter(count.GetCompare);
+            source.StartTime += time.StartHandler;
+            source.StopTime += time.StopHandler;
+            source.SwapCounter += count.GetSwap;
+            source.CompareCounter += count.GetCompare;
             source.Sort();
-            source.UnsubscribeTimeStart(time.StartHandler);
-            source.UnsubscribeTimeStop(time.StopHandler);
-            source.UnsubscribeSwapCounter(count.GetSwap);
-            source.UnsubscribeCompareCounter(count.GetCompare);
+
+            Console.WriteLine($"SwapCount: {count.SwapCount} --- CompareCount: {count.CompareCount}");
+
+            source.StartTime -= time.StartHandler;
+            source.StopTime -= time.StopHandler;
+            source.SwapCounter -= count.GetSwap;
+            source.CompareCounter -= count.GetCompare;
 
             Console.ReadKey();
         }

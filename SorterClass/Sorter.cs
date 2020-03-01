@@ -27,6 +27,58 @@ namespace PublisherSubscriberProj
 
         #endregion
 
+        #region ======------ EVENTS ------======
+
+        public event StartStopSorted StartTime
+        {
+            add
+            {
+                _startTime += value;
+            }
+            remove
+            {
+                _startTime -= value;
+            }
+        }
+
+        public event StartStopSorted StopTime
+        {
+            add
+            {
+                _stopTime += value;
+            }
+            remove
+            {
+                _stopTime -= value;
+            }
+        }
+
+        public event SwapCompareCounter SwapCounter
+        {
+            add
+            {
+                _swapCounter += value;
+            }
+            remove
+            {
+                _swapCounter -= value;
+            }
+        }
+
+        public event SwapCompareCounter CompareCounter
+        {
+            add
+            {
+                _compareCounter += value;
+            }
+            remove
+            {
+                _compareCounter -= value;
+            }
+        }
+
+        #endregion
+
         private void GetRandomInitialize() 
         {
             Randomyzer rnd = Randomyzer.GetInstance();
@@ -43,7 +95,7 @@ namespace PublisherSubscriberProj
         {
             if (_swapCounter != null)
             {
-                _swapCounter(firstValue, secondValue);
+                _swapCounter(this, new SwapCompareEventArgs(firstValue, secondValue));
             }
 
             double tmp = firstValue;
@@ -55,54 +107,54 @@ namespace PublisherSubscriberProj
         {
             if (_compareCounter != null)
             {
-                _compareCounter(firstValue, secondValue);
+                _compareCounter(this, new SwapCompareEventArgs(firstValue, secondValue));
             }
 
             return (firstValue > secondValue);
         }
 
-        #region ======------ SUBSCRIBE/UNSUBSCRIBE METHODS ------=======
+        //#region ======------ SUBSCRIBE/UNSUBSCRIBE METHODS ------=======
 
-        public void SubscribeTimeStart(StartStopSorted source)
-        {
-            _startTime += source;
-        }
+        //public void SubscribeTimeStart(StartStopSorted source)
+        //{
+        //    _startTime += source;
+        //}
 
-        public void UnsubscribeTimeStart(StartStopSorted source)
-        {
-            _startTime -= source;
-        }
+        //public void UnsubscribeTimeStart(StartStopSorted source)
+        //{
+        //    _startTime -= source;
+        //}
 
-        public void SubscribeTimeStop(StartStopSorted source)
-        {
-            _stopTime += source;
-        }
+        //public void SubscribeTimeStop(StartStopSorted source)
+        //{
+        //    _stopTime += source;
+        //}
 
-        public void UnsubscribeTimeStop(StartStopSorted source)
-        {
-            _stopTime -= source;
-        }
+        //public void UnsubscribeTimeStop(StartStopSorted source)
+        //{
+        //    _stopTime -= source;
+        //}
 
-        public void SubscribeCompareCounter(SwapCompareCounter source)
-        {
-            _compareCounter += source;
-        }
+        //public void SubscribeCompareCounter(SwapCompareCounter source)
+        //{
+        //    _compareCounter += source;
+        //}
 
-        public void UnsubscribeCompareCounter(SwapCompareCounter source)
-        {
-            _compareCounter -= source;
-        }
+        //public void UnsubscribeCompareCounter(SwapCompareCounter source)
+        //{
+        //    _compareCounter -= source;
+        //}
 
-        public void SubscribeSwapCounter(SwapCompareCounter source)
-        {
-            _swapCounter += source;
-        }
+        //public void SubscribeSwapCounter(SwapCompareCounter source)
+        //{
+        //    _swapCounter += source;
+        //}
 
-        public void UnsubscribeSwapCounter(SwapCompareCounter source)
-        {
-            _swapCounter -= source;
-        }
+        //public void UnsubscribeSwapCounter(SwapCompareCounter source)
+        //{
+        //    _swapCounter -= source;
+        //}
 
-        #endregion
+        //#endregion
     }
 }

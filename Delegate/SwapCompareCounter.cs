@@ -6,5 +6,5 @@ using System.Threading.Tasks;
 
 namespace PublisherSubscriberProj.Delegate
 {
-    delegate void SwapCompareCounter(double firstValue, double secondValue);
+    delegate void SwapCompareCounter(object sender, SwapCompareEventArgs args);
 }

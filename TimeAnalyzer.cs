@@ -8,14 +8,14 @@ namespace PublisherSubscriberProj
 {
     class TimeAnalyzer
     {
-        public void StartHandler(DateTime dateTime)
+        public void StartHandler(object sender, StartStopSortedEventArgs args)
         {
-            Console.WriteLine($"StartTime sort: {dateTime.Millisecond}");
+            Console.WriteLine($"StartTime sort: {args.Time.Millisecond}");
         }
 
-        public void StopHandler(DateTime dateTime)
+        public void StopHandler(object sender, StartStopSortedEventArgs args)
         {
-            Console.WriteLine($"StopTime sort: {dateTime.Millisecond}");
+            Console.WriteLine($"StopTime sort: {args.Time.Millisecond}");
         }
     }
 }

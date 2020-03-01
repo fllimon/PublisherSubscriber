@@ -15,7 +15,7 @@ namespace PublisherSubscriberProj
 
             if (_startTime != null)
             {
-                _startTime(DateTime.Now);
+                _startTime(this, new StartStopSortedEventArgs(DateTime.Now));
             }
 
             for (int i = 0; i < array.Length / 2; i++)
@@ -62,7 +62,7 @@ namespace PublisherSubscriberProj
 
             if (_stopTime != null)
             {
-                _stopTime(DateTime.Now);
+                _stopTime(this, new StartStopSortedEventArgs(DateTime.Now));
             }
 
             return array;

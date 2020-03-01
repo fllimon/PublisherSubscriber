@@ -15,12 +15,32 @@ namespace PublisherSubscriberProj
 
         #endregion
 
-        public void GetCompare(double firstValue, double secondValue)
+        #region =====----- PROPERTIES -----======
+
+        public int SwapCount
+        {
+            get 
+            {
+                return _swapCounter; 
+            }
+        }
+
+        public int CompareCount
+        {
+            get
+            {
+                return _compareCounter;
+            }
+        }
+
+        #endregion
+
+        public void GetCompare(object sender, SwapCompareEventArgs args)
         {
             _compareCounter++;
         }
 
-        public void GetSwap(double firstValue, double secondValue)
+        public void GetSwap(object sender, SwapCompareEventArgs args)
         {
             _swapCounter++;
         }
