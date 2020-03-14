@@ -16,7 +16,7 @@ namespace PublisherSubscriberProj
 
             if (_startTime != null)
             {
-                _startTime(DateTime.Now, new StartStopSortedEventArgs(DateTime.Now));
+                _startTime(this, new StartStopSortedEventArgs(DateTime.Now));
             }
 
             for (int i = 0; i < source.Length - 1; i++)
