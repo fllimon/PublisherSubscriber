@@ -10,22 +10,17 @@ namespace PublisherSubscriberProj
     {
         static void Main(string[] args)
         {
-            SwapCompareAnalyzer count = new SwapCompareAnalyzer();
-            TimeAnalyzer time = new TimeAnalyzer();
             Sorter source = new BubbleSort();
+            SwapCompareAnalyzer count = new SwapCompareAnalyzer(source);
+            TimeAnalyzer time = new TimeAnalyzer(source);
 
-            source.StartTime += time.StartHandler;
-            source.StopTime += time.StopHandler;
-            source.SwapCounter += count.GetSwap;
-            source.CompareCounter += count.GetCompare;
+            count.Subscribe();
+            time.Subscribe();
             source.Sort();
+            count.Unsubscribe();
+            time.Unsubscribe();
 
             Console.WriteLine($"SwapCount: {count.SwapCount} --- CompareCount: {count.CompareCount}");
-
-            source.StartTime -= time.StartHandler;
-            source.StopTime -= time.StopHandler;
-            source.SwapCounter -= count.GetSwap;
-            source.CompareCounter -= count.GetCompare;
 
             Console.ReadKey();
         }

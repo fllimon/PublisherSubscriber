@@ -8,14 +8,37 @@ namespace PublisherSubscriberProj
 {
     class TimeAnalyzer
     {
-        public void StartHandler(object sender, StartStopSortedEventArgs args)
+        private readonly Sorter _sorter = null;
+
+        public TimeAnalyzer(Sorter sorter)
         {
-            Console.WriteLine($"StartTime sort: {args.Time.Millisecond}");
+            _sorter = sorter;
         }
 
-        public void StopHandler(object sender, StartStopSortedEventArgs args)
+        public void Subscribe()
         {
-            Console.WriteLine($"StopTime sort: {args.Time.Millisecond}");
+            _sorter.StartTime += delegate (object sender, StartStopSortedEventArgs args)
+            {
+                Console.WriteLine($"StartTime sort: {args.Time.Millisecond}");
+            };
+
+            _sorter.StopTime += delegate (object sender, StartStopSortedEventArgs args)
+            {
+                Console.WriteLine($"StartTime sort: {args.Time.Millisecond}");
+            };
+        }
+
+        public void Unsubscribe()
+        {
+            _sorter.StartTime -= delegate (object sender, StartStopSortedEventArgs args)
+            {
+                Console.WriteLine($"StartTime sort: {args.Time.Millisecond}");
+            };
+
+            _sorter.StopTime -= delegate (object sender, StartStopSortedEventArgs args)
+            {
+                Console.WriteLine($"StartTime sort: {args.Time.Millisecond}");
+            };
         }
     }
 }

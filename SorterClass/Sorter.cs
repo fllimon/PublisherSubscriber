@@ -112,49 +112,5 @@ namespace PublisherSubscriberProj
 
             return (firstValue > secondValue);
         }
-
-        //#region ======------ SUBSCRIBE/UNSUBSCRIBE METHODS ------=======
-
-        //public void SubscribeTimeStart(StartStopSorted source)
-        //{
-        //    _startTime += source;
-        //}
-
-        //public void UnsubscribeTimeStart(StartStopSorted source)
-        //{
-        //    _startTime -= source;
-        //}
-
-        //public void SubscribeTimeStop(StartStopSorted source)
-        //{
-        //    _stopTime += source;
-        //}
-
-        //public void UnsubscribeTimeStop(StartStopSorted source)
-        //{
-        //    _stopTime -= source;
-        //}
-
-        //public void SubscribeCompareCounter(SwapCompareCounter source)
-        //{
-        //    _compareCounter += source;
-        //}
-
-        //public void UnsubscribeCompareCounter(SwapCompareCounter source)
-        //{
-        //    _compareCounter -= source;
-        //}
-
-        //public void SubscribeSwapCounter(SwapCompareCounter source)
-        //{
-        //    _swapCounter += source;
-        //}
-
-        //public void UnsubscribeSwapCounter(SwapCompareCounter source)
-        //{
-        //    _swapCounter -= source;
-        //}
-
-        //#endregion
     }
 }

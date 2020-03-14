@@ -12,6 +12,16 @@ namespace PublisherSubscriberProj
 
         private int _compareCounter = 0;
         private int _swapCounter = 0;
+        private readonly Sorter _sorter = null;
+
+        #endregion
+
+        #region =====----- CTOR ------=====
+
+        public SwapCompareAnalyzer(Sorter sorter)
+        {
+            _sorter = sorter;
+        }
 
         #endregion
 
@@ -35,14 +45,30 @@ namespace PublisherSubscriberProj
 
         #endregion
 
-        public void GetCompare(object sender, SwapCompareEventArgs args)
+        public void Subscribe()
         {
-            _compareCounter++;
+            _sorter.SwapCounter += delegate(object sender, SwapCompareEventArgs args)
+            {
+                _swapCounter++;
+            };
+
+            _sorter.CompareCounter += delegate (object sender, SwapCompareEventArgs args)
+            {
+                _compareCounter++;
+            };
         }
 
-        public void GetSwap(object sender, SwapCompareEventArgs args)
+        public void Unsubscribe()
         {
-            _swapCounter++;
+            _sorter.SwapCounter -= delegate (object sender, SwapCompareEventArgs args)
+            {
+                _swapCounter++;
+            };
+
+            _sorter.CompareCounter -= delegate (object sender, SwapCompareEventArgs args)
+            {
+                _compareCounter++;
+            };
         }
     }
 }
